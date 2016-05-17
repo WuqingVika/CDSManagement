@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="uploadFile" namespace="/" extends="struts-default">
+		<action name="uploadFile" class="uploadFileAction">
+			<result name="upload">/success.jsp</result>
+			<interceptor-ref name="defaultStack">
+				<!-- 设置文件的大小 -->
+				<param name="fileUpload.maximumSize">1000000000</param>
+				<!-- 设置文件的类型 -->
+				<param name="fileUpload.allowedTypes">text/plain,application/msword,image/gif,image/jpeg,application/pdf,image/png,application/vnd.ms-powerpoint,application/zip</param>
+			</interceptor-ref>
+		</action>
+	</package>
+</struts>

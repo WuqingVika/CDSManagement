@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="student" namespace="/" extends="struts-default">
+		<action name="student_*" class="studentAction" method="{1}">
+			<result name="studentInfo">/Student/SearchPersonalInfo.jsp</result>
+			<result name="modifypass">/Login.jsp</result>
+			<result name="needChoosing">/Student/SelectCDTopic.jsp</result>
+			<result name="selfSelectCDTopic" type="redirectAction">student_findAllSelfChoosed.action</result>
+			<result name="selfSelectError" type="redirectAction">student_searchCDChoosing.action</result>
+			<result name="selectCDTopicSuccess" type="redirectAction">student_findAllChooseThCD.action</result>
+			<result name="selectCDTopicError" type="redirectAction">student_searchCDChoosing.action</result>
+			<result name="selectChoosingCD_1">/Student/ViewChoosedCDTopic.jsp</result>
+			<result name="selectChoosingCD_2">/Student/ViewChoosedCDTopic2.jsp</result>
+			<result name="selectChoosingCD_3">/Student/ViewChoosedCDTopic3.jsp</result>			 
+		</action>
+		<!-- 下载学生的pdf -->
+		<action name="student_toPDF" class="studentAction">
+			<result name="success" type="stream">
+				<!-- 制定下载的文件名和显示的方式 -->
+				<param name="contentDisposition">
+					attachment;filename="${fileName}"
+				</param>
+				<!-- 通过getDownLoadFile方法获得inputStream -->
+				<param name="inputName">studentInfoPDF</param>
+				<!-- 指定下载文件的缓存大小 -->
+				<param name="bufferSize">204800</param>
+			</result>
+		</action>
+	</package>
+</struts>

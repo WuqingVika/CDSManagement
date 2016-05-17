@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Cdplan" table="cdplan" catalog="cds" optimistic-lock="version">
+        <id name="cdplanId" type="java.lang.Integer">
+            <column name="cDPlanId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="major" class="com.cds.entity.Major" fetch="select">
+            <column name="majorId" />
+        </many-to-one>
+        <many-to-one name="term" class="com.cds.entity.Term" fetch="select">
+            <column name="termId" />
+        </many-to-one>
+        <property name="cdplanNum" type="string">
+            <column name="cDPlanNum" length="20" />
+        </property>
+        <property name="cdplanName" type="string">
+            <column name="cDPlanName" length="200" />
+        </property>
+        <property name="totalCredits" type="java.lang.Float">
+            <column name="totalCredits" precision="12" scale="0" />
+        </property>
+        <property name="totalClassHour" type="java.lang.Float">
+            <column name="totalClassHour" precision="12" scale="0" />
+        </property>
+        <property name="isCurrent" type="java.lang.Integer">
+            <column name="isCurrent" />
+        </property>
+        <set name="cdteachergroups" table="cdteachergroup" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cDPlanId" />
+            </key>
+            <one-to-many class="com.cds.entity.Cdteachergroup" />
+        </set>
+    </class>
+</hibernate-mapping>

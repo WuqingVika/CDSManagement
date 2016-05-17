@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Cdteachergroup" table="cdteachergroup" catalog="cds" optimistic-lock="version">
+        <id name="cdteacherGroupId" type="java.lang.Integer">
+            <column name="cDTeacherGroupId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cdplan" class="com.cds.entity.Cdplan" fetch="select">
+            <column name="cDPlanId" />
+        </many-to-one>
+        <many-to-one name="teacher" class="com.cds.entity.Teacher" fetch="select">
+            <column name="teacherId" />
+        </many-to-one>
+        <set name="processassshedules" table="processassshedule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cDTeacherGroupId" />
+            </key>
+            <one-to-many class="com.cds.entity.Processassshedule" />
+        </set>
+        <set name="teachers" table="cdgroupteachers" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cDTeacherGroupId" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.cds.entity.Teacher">
+                <column name="teacherId" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="evalstandardses" table="evalstandards" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cDTeacherGroupId" />
+            </key>
+            <one-to-many class="com.cds.entity.Evalstandards" />
+        </set>
+        <set name="cddesigntopicses" table="cddesigntopics" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cDTeacherGroupId" />
+            </key>
+            <one-to-many class="com.cds.entity.Cddesigntopics" />
+        </set>
+    </class>
+</hibernate-mapping>

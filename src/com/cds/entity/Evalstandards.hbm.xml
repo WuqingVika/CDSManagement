@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Evalstandards" table="evalstandards" catalog="cds" optimistic-lock="version">
+        <id name="evalStandId" type="java.lang.Integer">
+            <column name="evalStandId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cdteachergroup" class="com.cds.entity.Cdteachergroup" fetch="select">
+            <column name="cDTeacherGroupId" />
+        </many-to-one>
+        <property name="attendCoe" type="java.lang.Float">
+            <column name="attendCoe" precision="12" scale="0" />
+        </property>
+        <property name="procAccCoe" type="java.lang.Float">
+            <column name="procAccCoe" precision="12" scale="0" />
+        </property>
+        <property name="replyCoe" type="java.lang.Float">
+            <column name="replyCoe" precision="12" scale="0" />
+        </property>
+        <property name="selfCoe" type="java.lang.Float">
+            <column name="selfCoe" precision="12" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

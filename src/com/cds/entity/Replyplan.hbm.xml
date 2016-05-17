@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Replyplan" table="replyplan" catalog="cds" optimistic-lock="version">
+        <id name="replyPlanId" type="java.lang.Integer">
+            <column name="replyPlanId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="replygroup" class="com.cds.entity.Replygroup" fetch="select">
+            <column name="replyGroupId" />
+        </many-to-one>
+        <many-to-one name="studentgroup" class="com.cds.entity.Studentgroup" fetch="select">
+            <column name="stuGroupId" />
+        </many-to-one>
+        <property name="replyName" type="string">
+            <column name="replyName" length="100" />
+        </property>
+        <property name="replyDescribtion" type="string">
+            <column name="replyDescribtion" length="200" />
+        </property>
+        <property name="startTime" type="timestamp">
+            <column name="startTime" length="19" />
+        </property>
+        <property name="endTime" type="timestamp">
+            <column name="endTime" length="19" />
+        </property>
+        <property name="replyLocation" type="string">
+            <column name="replyLocation" length="200" />
+        </property>
+        <set name="replyrecordses" table="replyrecords" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="replyPlanId" />
+            </key>
+            <one-to-many class="com.cds.entity.Replyrecords" />
+        </set>
+    </class>
+</hibernate-mapping>

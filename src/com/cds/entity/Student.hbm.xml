@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Student" table="student" catalog="cds" optimistic-lock="version">
+        <id name="stuId" type="java.lang.Integer">
+            <column name="stuId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="account" class="com.cds.entity.Account" fetch="select">
+            <column name="accId" />
+        </many-to-one>
+        <many-to-one name="classes" class="com.cds.entity.Classes" fetch="select">
+            <column name="classId" />
+        </many-to-one>
+        <property name="studentId" type="string">
+            <column name="studentId" length="20" />
+        </property>
+        <property name="stuName" type="string">
+            <column name="stuName" length="50" />
+        </property>
+        <set name="replyrecordses" table="replyrecords" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuId" />
+            </key>
+            <one-to-many class="com.cds.entity.Replyrecords" />
+        </set>
+        <set name="studentgroups" table="stugroupmembers" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="stuId" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.cds.entity.Studentgroup">
+                <column name="stuGroupId" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="processdocuments" table="processdocument" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuId" />
+            </key>
+            <one-to-many class="com.cds.entity.Processdocument" />
+        </set>
+        <set name="studentscores" table="studentscore" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuId" />
+            </key>
+            <one-to-many class="com.cds.entity.Studentscore" />
+        </set>
+        <set name="selfevaluations" table="selfevaluation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuId" />
+            </key>
+            <one-to-many class="com.cds.entity.Selfevaluation" />
+        </set>
+        <set name="studentgroups_1" table="studentgroup" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuId" />
+            </key>
+            <one-to-many class="com.cds.entity.Studentgroup" />
+        </set>
+    </class>
+</hibernate-mapping>

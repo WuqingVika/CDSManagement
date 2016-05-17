@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Replyrecords" table="replyrecords" catalog="cds" optimistic-lock="version">
+        <id name="replyRecordId" type="java.lang.Integer">
+            <column name="replyRecordId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="replyplan" class="com.cds.entity.Replyplan" fetch="select">
+            <column name="replyPlanId" />
+        </many-to-one>
+        <many-to-one name="student" class="com.cds.entity.Student" fetch="select">
+            <column name="stuId" />
+        </many-to-one>
+        <many-to-one name="teacher" class="com.cds.entity.Teacher" fetch="select">
+            <column name="teacherId" />
+        </many-to-one>
+        <property name="question" type="string">
+            <column name="question" length="200" />
+        </property>
+        <property name="answers" type="string">
+            <column name="answers" length="300" />
+        </property>
+        <property name="answerTime" type="timestamp">
+            <column name="answerTime" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

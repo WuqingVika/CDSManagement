@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="	
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd	
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd	
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd	
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+	">
+	<!-- ************************************配置公共部分的service部分开始********************** -->
+	<!-- pageBean部分 -->
+	<bean id="pageBeanService" class="com.cds.service.impl.ResultService">
+		<property name="resultDao" ref="resultDao"></property>
+	</bean>
+
+
+
+	<!--************************************配置service层对象******************************* -->	 
+	<!-- wq配置service部分 -->
+	<bean id="accountService" class="com.cds.service.impl.AccountService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="cdchoosingrecordService" class="com.cds.service.impl.CdchoosingrecordService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="cddesigntopicsService" class="com.cds.service.impl.CddesigntopicsService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="cdplanService" class="com.cds.service.impl.CdplanService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="classesService" class="com.cds.service.impl.ClassesService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="cdteachergroupService" class="com.cds.service.impl.CdteachergroupService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="collegeService" class="com.cds.service.impl.CollegeService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	
+	<!-- zmm配置service部分 -->
+	<bean id="commentsService" class="com.cds.service.impl.CommentsService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="evalstandardsService" class="com.cds.service.impl.EvalstandardsService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="majorService" class="com.cds.service.impl.MajorService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="processasssheduleService" class="com.cds.service.impl.ProcessasssheduleService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="processdocumentService" class="com.cds.service.impl.ProcessdocumentService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="replygroupService" class="com.cds.service.impl.ReplygroupService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="replyplanService" class="com.cds.service.impl.ReplyplanService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+
+	<!-- cp配置service部分 -->
+	<bean id="replyRecordsService" class="com.cds.service.impl.ReplyrecordsService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="selfEvaluationService" class="com.cds.service.impl.SelfevaluationService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="studentService" class="com.cds.service.impl.StudentService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="studentGroupService" class="com.cds.service.impl.StudentgroupService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="studentScoreService" class="com.cds.service.impl.StudentscoreService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="teacherService" class="com.cds.service.impl.TeacherService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+	<bean id="termService" class="com.cds.service.impl.TermService">
+		<property name="daoFactory" ref="daoFactory"></property>
+	</bean>
+
+
+
+
+	<!-- *********************************以下配置为serviceFactory配置 *************************** -->
+	<bean id="serviceFactory" class="com.cds.service.service.factory.ServiceFactory">
+		<!-- pagebean配置开始 -->
+		<property name="pageBeanService" ref="pageBeanService"></property>
+		<!-- pagebean配置结束 -->
+		
+		<!-- wq配置serviceFactory部分 -->
+		<property name="cdchoosingrecordService" ref="cdchoosingrecordService"></property>
+		<property name="cddesigntopicsService" ref="cddesigntopicsService"></property>
+		<property name="cdplanService" ref="cdplanService"></property>
+		<property name="classesService" ref="classesService"></property>
+		<property name="cdteachergroupService" ref="cdteachergroupService"></property>
+		<property name="collegeService" ref="collegeService"></property>		
+		<property name="accountService" ref="accountService"></property>
+
+		<!-- zmm配置serviceFactory部分 -->
+		<property name="commentsService" ref="commentsService"></property>
+		<property name="evalstandardsService" ref="evalstandardsService"></property>
+		<property name="majorService" ref="majorService"></property>
+		<property name="processasssheduleService" ref="processasssheduleService"></property>
+		<property name="processdocumentService" ref="processdocumentService"></property>
+		<property name="replygroupService" ref="replygroupService"></property>
+		<property name="replyplanService" ref="replyplanService"></property>
+		
+		<!-- cp配置serviceFactory部分 -->
+		<property name="replyRecordsService" ref="replyRecordsService"></property>
+		<property name="selfEvaluationService" ref="selfEvaluationService"></property>
+		<property name="studentService" ref="studentService"></property>
+		<property name="studentGroupService" ref="studentGroupService"></property>
+		<property name="studentScoreService" ref="studentScoreService"></property>
+		<property name="teacherService" ref="teacherService"></property>
+		<property name="termService" ref="termService"></property>
+	</bean>
+</beans>

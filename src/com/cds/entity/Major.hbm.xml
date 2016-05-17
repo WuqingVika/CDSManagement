@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Major" table="major" catalog="cds" optimistic-lock="version">
+        <id name="majorId" type="java.lang.Integer">
+            <column name="majorId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="college" class="com.cds.entity.College" fetch="select">
+            <column name="collegeId" />
+        </many-to-one>
+        <property name="majorName" type="string">
+            <column name="majorName" length="200" />
+        </property>
+        <set name="classeses" table="classes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="majorId" />
+            </key>
+            <one-to-many class="com.cds.entity.Classes" />
+        </set>
+        <set name="cdplans" table="cdplan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="majorId" />
+            </key>
+            <one-to-many class="com.cds.entity.Cdplan" />
+        </set>
+    </class>
+</hibernate-mapping>

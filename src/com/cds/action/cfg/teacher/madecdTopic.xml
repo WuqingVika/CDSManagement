@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="teacher" namespace="/" extends="struts-default">		 
+		<action name="teacher_viewCdplanName" class="teacher_madecdTopicAction" method="viewCdplanName">
+			<result name="success">/Teacher/MadeCDTopic.jsp</result>
+		</action>
+		<action name="teacher_addCdTopic" class="teacher_madecdTopicAction" method="addCdTopic">
+			<result name="success">/Teacher/MadeCDTopic.jsp</result>
+		</action>
+		<action name="teacher_viewCdplanNameExs" class="teacher_ExSecdTopicAction" method="viewCdplanNameExs">			
+			<result name="success">/Teacher/ExSelectedCDTopic.jsp</result>						
+		</action>
+		<action name="teacher_FindExTopic" class="teacher_ExSecdTopicAction" method="FindExTopic">			
+			<result name="extopics">/Teacher/ExSelectedCDTopic.jsp</result>
+		</action>
+		<action name="teacher_showGroupMembers" class="teacher_ExSecdTopicAction" method="showGroupMembers">			
+			<result name="error">/index.jsp</result>	
+		</action>
+		<action name="teacher_viewCdplanNameMakecdt" class="teacher_ExSecdTopicAction" method="viewCdplanNameExs">			
+			<result name="success">/Teacher/MakeProcessPlan.jsp</result>
+		</action>
+		<action name="teacher_getNopass" class="teacher_ExSecdTopicAction" method="getNopass">			
+			
+		</action>
+		<action name="teacher_ShenHe" class="teacher_ExSecdTopicAction" method="ShenHe">			
+				<result name="ShenHe">/Teacher/ExSelectedCDTopic.jsp</result>
+			</action>
+	</package>
+</struts>

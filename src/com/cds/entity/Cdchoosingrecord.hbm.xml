@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Cdchoosingrecord" table="cdchoosingrecord" catalog="cds" optimistic-lock="version">
+        <id name="cdchoosingRecId" type="java.lang.Integer">
+            <column name="cDChoosingRecId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cddesigntopics" class="com.cds.entity.Cddesigntopics" fetch="select">
+            <column name="cDDesignTopId" />
+        </many-to-one>
+        <property name="submitTime" type="timestamp">
+            <column name="submitTime" length="19" />
+        </property>
+        <property name="passTime" type="timestamp">
+            <column name="passTime" length="19" />
+        </property>
+        <property name="tutorOpinion" type="string">
+            <column name="tutorOpinion" length="300" />
+        </property>
+        <property name="isPassed" type="java.lang.Integer">
+            <column name="isPassed" />
+        </property>
+    </class>
+</hibernate-mapping>

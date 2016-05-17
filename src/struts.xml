@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 公共的部分（不能删） --><!-- 设置上传文件大小 ，单位是Byte，这里设置10M -->
+	<constant name="struts.multipart.maxSize" value="10485760" />
+	<!-- 常量设置 -->
+	<!-- 自动加载变更 -->
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 公共 -->
+	<include file="com/cds/action/cfg/securityCode.xml"></include>
+	<include file="com/cds/action/cfg/uploadFile.xml"></include>
+	<include file="com/cds/action/cfg/downloadFile.xml"></include>
+	<include file="com/cds/action/cfg/toExcel.xml"></include>
+	<include file="com/cds/action/cfg/importExcel.xml"></include>
+	<include file="com/cds/action/cfg/toPDF.xml"></include>
+	<!-- 这里是测试的部分 -->
+	<include file="com/cds/action/cfg/account.xml"></include>	
+	
+	<!-- wq添加文件的位置 -->
+	
+	<include file="com/cds/action/cfg/teacher/madecdTopic.xml"></include>
+	<include file="com/cds/action/cfg/teacher/makeProcessPlan.xml"></include>
+	<!-- zmm添加文件的位置 -->
+	<include file="com/cds/action/cfg/teacherdirect/collegeinfo.xml"></include>
+	<include file="com/cds/action/cfg/teacherdirect/terminfo.xml"></include>
+	<include file="com/cds/action/cfg/teacherdirect/majorinfo.xml"></include>
+	<include file="com/cds/action/cfg/teacherdirect/classinfo.xml"></include>
+	<include file="com/cds/action/cfg/teacherdirect/teacherinfo.xml"></include>
+	<include file="com/cds/action/cfg/teacherdirect/studentinfo.xml"></include>
+	<include file="com/cds/action/cfg/teacherdirect/cdplanmanagerinfo.xml"></include>
+	<include file="com/cds/action/cfg/teacherdirect/cdplanleadermanage.xml"></include>
+	<include file="com/cds/action/cfg/teacher/replyplanManage.xml"></include>
+	<include file="com/cds/action/cfg/teacherdirect/teacherdirectorinfo.xml"></include>
+	<!-- cp添加文件的位置 -->
+	<include file="com/cds/action/cfg/teacher/teachGroupLead_c.xml"></include>
+	<include file="com/cds/action/cfg/student/student.xml"></include> 
+	<include file="com/cds/action/cfg/student/cddesigntask.xml"></include>	
+</struts>

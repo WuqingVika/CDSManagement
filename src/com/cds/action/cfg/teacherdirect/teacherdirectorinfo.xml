@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 本配置文件是教研室主任信息管理对应的Action类。 -->
+<struts>
+	<package name="teacherdirectlast" namespace="/" extends="struts-default">		 
+		<!-- 显示教研室主任信息的action -->
+		<action name="teacherdirectorinfo_index" class="teacherdirectorinfoAction_z" method="index">
+			<result name="success">/TeachDirector/TeacherDirectorInfoManager.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+		<!-- 获得教师的action -->
+		<action name="teacherdirectorinfo_getTeacher" class="teacherdirectorinfoAction_z" method="getTeacher">
+			
+		</action>
+		<!-- 增加教研室主任的action -->
+		<action name="teacherdirectorinfo_add" class="teacherdirectorinfoAction_z" method="addTeacherDirector">
+			<result name="success" type="redirectAction">teacherdirectorinfo_index</result>
+		</action>
+		<!-- 删除班级的Action -->
+		<action name="teacherdirectorinfo_delete" class="teacherdirectorinfoAction_z" method="deleteTeacherDirector">
+		</action>
+	</package>
+</struts>

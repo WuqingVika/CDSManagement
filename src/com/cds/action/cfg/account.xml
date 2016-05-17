@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="account" namespace="/" extends="struts-default">		 
+		<action name="test_*" class="testAction" method="{1}">
+			<result name="success">/result.jsp</result>
+		</action>
+		<!-- 登录功能 -->
+		<action name="login" class="loginAction" method="login">
+			<result name="student" type="redirectAction">student_getStudentInfo.action</result>
+			<result name="teacher" type="redirectAction">teacher_viewCdplanName.action</result>
+			<result name="teacherDir" type="redirectAction">majorinfo_index.action</result>
+			<result name="input">/Login.jsp</result>
+		</action>		 
+	</package>
+</struts>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Account" table="account" catalog="cds" optimistic-lock="version">
+        <id name="accId" type="java.lang.Integer">
+            <column name="accId" />
+            <generator class="identity" />
+        </id>
+        <property name="accountId" type="string">
+            <column name="accountId" length="50" />
+        </property>
+        <property name="passwords" type="string">
+            <column name="passwords" length="50" />
+        </property>
+        <property name="role" type="java.lang.Integer">
+            <column name="role" />
+        </property>
+        <set name="teachers" table="teacher" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="accId" />
+            </key>
+            <one-to-many class="com.cds.entity.Teacher" />
+        </set>
+        <set name="students" table="student" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="accId" />
+            </key>
+            <one-to-many class="com.cds.entity.Student" />
+        </set>
+    </class>
+</hibernate-mapping>

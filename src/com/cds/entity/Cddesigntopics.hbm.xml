@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Cddesigntopics" table="cddesigntopics" catalog="cds" optimistic-lock="version">
+        <id name="cddesignTopId" type="java.lang.Integer">
+            <column name="cDDesignTopId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cdteachergroup" class="com.cds.entity.Cdteachergroup" fetch="select">
+            <column name="cDTeacherGroupId" />
+        </many-to-one>
+        <many-to-one name="teacher" class="com.cds.entity.Teacher" fetch="select">
+            <column name="teacherId" />
+        </many-to-one>
+        <property name="topics" type="string">
+            <column name="topics" length="100" />
+        </property>
+        <property name="topicsDescribtion" type="string">
+            <column name="topicsDescribtion" length="300" />
+        </property>
+        <property name="isSelfChoosed" type="java.lang.Integer">
+            <column name="isSelfChoosed" />
+        </property>
+        <set name="selfevaluations" table="selfevaluation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cDDesignTopId" />
+            </key>
+            <one-to-many class="com.cds.entity.Selfevaluation" />
+        </set>
+        <set name="studentgroups" table="studentgroup" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cDDesignTopId" />
+            </key>
+            <one-to-many class="com.cds.entity.Studentgroup" />
+        </set>
+        <set name="cdchoosingrecords" table="cdchoosingrecord" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cDDesignTopId" />
+            </key>
+            <one-to-many class="com.cds.entity.Cdchoosingrecord" />
+        </set>
+        <set name="studentscores" table="studentscore" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cDDesignTopId" />
+            </key>
+            <one-to-many class="com.cds.entity.Studentscore" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd	
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd	
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd	
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+	">
+	<!--配置action的对象 -->
+	<!--注意一定要加上scope="prototype" -->
+	<!-- *************************这里是公共的action配置部分***************************** -->
+	<!-- 生成验证码 -->
+	<bean id="getSecurityCode" class="com.cds.action.SecurityCodeImageAction"
+		scope="prototype">
+	</bean>
+
+	<!-- 登录功能 -->
+	<bean id="loginAction" class="com.cds.action.LoginAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<!-- 上传文件 -->
+	<bean id="uploadFileAction" class="com.cds.action.FileUploadAction"
+		scope="prototype">
+	</bean>
+	<!-- 下载文件 -->
+	<bean id="downloadFileAction" class="com.cds.action.DownLoadAction"
+		scope="prototype">
+	</bean>
+	<!-- 导出excel -->
+	<bean id="toExcelAction" class="com.cds.action.ExcelExportAction"
+		scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<!-- 导入excel -->
+	<bean id="importExcelAction" class="com.cds.action.ExcelImportAction"
+		scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<!-- 导出pdf -->
+	<bean id="toPDFAction" class="com.cds.action.PDFExportAction">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+
+	<!-- *************************这里是测试的部分************************************** -->
+	<bean id="testAction" class="com.cds.action.Test" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+
+	<!-- ************************这里是wq配置action的部分****************************** -->
+	<bean id="teacher_madecdTopicAction" class="com.cds.action.teacher.MadeCDTopicAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="teacher_ExSecdTopicAction" class="com.cds.action.teacher.ExSeCdTopicAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="MakeProcessPlanAction_w" class="com.cds.action.teacher.MakeProcessPlanAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="ViewProcessFileAction_w" class="com.cds.action.teacher.ViewProcessFileAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<!-- ************************这里是zmm配置action的部分****************************** -->
+	<bean id="collegeInfoAction_z" class="com.cds.action.teacherdirect.CollegeInfoAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="termInfoAction_z" class="com.cds.action.teacherdirect.TermInfoAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="majorInfoAction_z" class="com.cds.action.teacherdirect.MajorInfoAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="classInfoAction_z" class="com.cds.action.teacherdirect.ClassInfoAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="teacherInfoAction_z" class="com.cds.action.teacherdirect.TeacherInfoAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="studentInfoAction_z" class="com.cds.action.teacherdirect.StudentInfoAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="cdplanManageInfoAction_z" class="com.cds.action.teacherdirect.CdplanManageInfoAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="cdplanLeaderManageAction_z" class="com.cds.action.teacherdirect.CdplanLeaderAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="teacherLeaderReplyPlanMgmt_z" class="com.cds.action.teacher.ReplyPlanMgmtAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="teacherdirectorinfoAction_z" class="com.cds.action.teacherdirect.TeacherDirectorInfoAction" scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<!-- ************************这里是cp配置action的部分****************************** -->
+	<bean id="techGroupLead_c" class="com.cds.action.teacher.TeacherLeaderAction_c"
+		scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="studentAction" class="com.cds.action.student.StudentAction_c"
+		scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+	<bean id="cdDesignTaskAction" class="com.cds.action.student.CDDesignTopicTask_c"
+		scope="prototype">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+</beans>

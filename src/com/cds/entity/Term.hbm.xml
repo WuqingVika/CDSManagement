@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Term" table="term" catalog="cds" optimistic-lock="version">
+        <id name="termId" type="java.lang.Integer">
+            <column name="termId" />
+            <generator class="identity" />
+        </id>
+        <property name="termName" type="string">
+            <column name="termName" length="200" />
+        </property>
+        <set name="cdplans" table="cdplan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="termId" />
+            </key>
+            <one-to-many class="com.cds.entity.Cdplan" />
+        </set>
+    </class>
+</hibernate-mapping>

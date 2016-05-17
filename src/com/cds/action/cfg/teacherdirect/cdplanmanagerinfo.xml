@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 本配置文件是课程计划管理信息对应的Action。 -->
+<struts>
+	<package name="teacherdirect7" namespace="/" extends="struts-default">
+		<!-- 显示学生信息的action -->
+		<action name="cdplaninfo_index" class="cdplanManageInfoAction_z" method="index">
+			<result name="success">/TeachDirector/CDGroupManage.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+		<!--导入信息-->
+		<action name="cdplaninfo_import" class="cdplanManageInfoAction_z" method="importCdplan">
+			<result name="success" type="redirectAction">cdplaninfo_index</result>
+			<result name="error">/index.jsp</result>
+			<result name="input">/index.jsp</result>
+			<interceptor-ref name="defaultStack">
+				<!-- 设置文件的大小 -->
+				<param name="fileUpload.maximumSize">1000000000</param>
+				<!-- 设置文件的类型 -->
+				<param name="fileUpload.allowedTypes">application/excel,application/vnd.ms-excel,text/plain</param>
+				<!-- 文件的后缀 -->
+				<param name="fileUpload.allowedExtensions">xls,txt,xlsx</param>
+			</interceptor-ref>
+		</action>
+	</package>
+</struts>

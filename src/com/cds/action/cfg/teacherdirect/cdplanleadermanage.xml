@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 本配置文件是课程计划管理组长信息对应的Action。 -->
+<struts>
+	<package name="teacherdirect8" namespace="/" extends="struts-default">
+		<!-- 显示学生信息的action -->
+		<action name="cdplanleader_index" class="cdplanLeaderManageAction_z" method="index">
+			<result name="success">/TeachDirector/CDGroupLeaderManage.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+		<!-- 获得该学院所有的教师 -->
+		<action name="cdplanleader_getTeachers" class="cdplanLeaderManageAction_z" method="getTeachers">
+			
+		</action>
+		<!-- 添加课程计划的组长 -->
+		<action name="cdplanleader_addLeaderTeacher" class="cdplanLeaderManageAction_z" method="addLeaderTeacher">
+			<result name="success" type="redirectAction">cdplanleader_index</result>
+		</action>
+		<!-- 删除课程计划的组长 -->
+		<action name="cdplanleader_deleteLeaderTeacher" class="cdplanLeaderManageAction_z" method="deleteTeacher">
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="cddesigntask" namespace="/" extends="struts-default">
+		<action name="cddesigntask_*" class="cdDesignTaskAction" method="{1}">	
+			<!-- 查看已经选择的所有的课题 -->
+			<result name="searchAllCD">/Student/ViewProcessPlan.jsp</result>
+			<!-- 上传课程设计文档 -->
+			<result name="uploadCDTask">/Student/UploadProcessFile.jsp</result>	
+			<!-- 查看已经提交的课程设计页面 -->
+			<result name="searchCDTask">/Student/ViewMyProcessedFile.jsp</result>	
+			<!-- 跳转到个人自评页面 -->
+			<result name="toSelfEval">/Student/SelfEvaluation.jsp</result> 	
+			<!-- 查看个人的成绩 -->
+			<result name="findStudentScore">/Student/ViewResults.jsp</result>	
+		</action>		
+		<!-- 导出为execel文档 -->
+		<action name="cddesigntaskExcel" class="cdDesignTaskAction">
+			<result name="success" type="stream">
+				<!-- 指定文件下载类型 -->
+				<param name="contentType">application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document</param>
+				<!-- 制定下载的文件名和显示的方式 -->
+				<param name="contentDisposition">
+					attachment;filename="${fileName}"
+				</param>
+				<!-- 通过getDownLoadFile方法获得inputStream -->
+				<param name="inputName">excel</param>
+				<!-- 指定下载文件的缓存大小 -->
+				<param name="bufferSize">204800</param>
+			</result>
+		</action> 
+		<!-- 上传用户的过程文档 -->
+		<action name="cddesigntaskUploadFile" class="cdDesignTaskAction" method="upLoadFile">			 
+			<interceptor-ref name="defaultStack">
+				<!-- 设置文件的大小 -->
+				<param name="fileUpload.maximumSize">1000000000</param>
+				<!-- 设置文件的类型 -->
+				<param name="fileUpload.allowedTypes">text/plain,application/msword,image/gif,image/jpeg,application/pdf,image/png,application/vnd.ms-powerpoint,application/zip</param>
+			</interceptor-ref>
+		</action>
+		<!-- 下载过程材料 -->
+		<action name="cddesigntaskDownloadFile" class="cdDesignTaskAction">
+			<result name="success" type="stream">
+				<!-- 指定文件下载类型 -->
+				<param name="contentType">application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document</param>
+				<!-- 制定下载的文件名和显示的方式 -->
+				<param name="contentDisposition">
+					attachment;filename="${fileName}"
+				</param>
+				<!-- 通过getDownLoadFile方法获得inputStream -->
+				<param name="inputName">downLoadFile</param>
+				<!-- 指定下载文件的缓存大小 -->
+				<param name="bufferSize">204800</param>
+			</result>
+		</action>
+	</package>
+</struts>

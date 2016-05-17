@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Teacher" table="teacher" catalog="cds" optimistic-lock="version">
+        <id name="teacherId" type="java.lang.Integer">
+            <column name="teacherId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="account" class="com.cds.entity.Account" fetch="select">
+            <column name="accId" />
+        </many-to-one>
+        <many-to-one name="college" class="com.cds.entity.College" fetch="select">
+            <column name="collegeId" />
+        </many-to-one>
+        <property name="teacherWorkId" type="string">
+            <column name="teacherWorkId" length="20" />
+        </property>
+        <property name="teacherName" type="string">
+            <column name="teacherName" length="30" />
+        </property>
+        <set name="cdteachergroups" table="cdgroupteachers" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="teacherId" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.cds.entity.Cdteachergroup">
+                <column name="cDTeacherGroupId" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="replygroups" table="replymembers" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="teacherId" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.cds.entity.Replygroup">
+                <column name="replyGroupId" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="cddesigntopicses" table="cddesigntopics" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="teacherId" />
+            </key>
+            <one-to-many class="com.cds.entity.Cddesigntopics" />
+        </set>
+        <set name="cdteachergroups_1" table="cdteachergroup" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="teacherId" />
+            </key>
+            <one-to-many class="com.cds.entity.Cdteachergroup" />
+        </set>
+        <set name="commentses" table="comments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="teacherId" />
+            </key>
+            <one-to-many class="com.cds.entity.Comments" />
+        </set>
+        <set name="processassshedules" table="processassshedule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="teacherId" />
+            </key>
+            <one-to-many class="com.cds.entity.Processassshedule" />
+        </set>
+        <set name="replyrecordses" table="replyrecords" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="teacherId" />
+            </key>
+            <one-to-many class="com.cds.entity.Replyrecords" />
+        </set>
+    </class>
+</hibernate-mapping>

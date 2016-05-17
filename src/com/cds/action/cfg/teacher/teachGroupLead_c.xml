@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="cdTeacherGroupLead_c" namespace="/" extends="struts-default">
+		 <action name="cdTechGroupLeC_*" class="techGroupLead_c" method="{1}">
+		 	 <result name="findAllNeedAllowCD">/TeachGroupLeader/TeacherManage.jsp</result>
+		 	 <result name="findAllAllowedMem">/TeachGroupLeader/TeacherModify.jsp</result>
+		 	 <result name="findStillEvalStand">/TeachGroupLeader/EvalStandardsManage.jsp</result>
+		 	 <result name="addEvalStandards" type="redirectAction">cdTechGroupLeC_findAlladdedEvalStand.action</result>		 	  	 	
+		 	 <result name="findAlladdedEvalStand">/TeachGroupLeader/EvalStandardModify.jsp</result>
+		 </action>
+	</package>
+</struts>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Studentgroup" table="studentgroup" catalog="cds" optimistic-lock="version">
+        <id name="stuGroupId" type="java.lang.Integer">
+            <column name="stuGroupId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cddesigntopics" class="com.cds.entity.Cddesigntopics" fetch="select">
+            <column name="cDDesignTopId" />
+        </many-to-one>
+        <many-to-one name="student" class="com.cds.entity.Student" fetch="select">
+            <column name="stuId" />
+        </many-to-one>
+        <set name="replyplans" table="replyplan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuGroupId" />
+            </key>
+            <one-to-many class="com.cds.entity.Replyplan" />
+        </set>
+        <set name="students" table="stugroupmembers" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="stuGroupId" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.cds.entity.Student">
+                <column name="stuId" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

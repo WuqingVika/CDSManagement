@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Processdocument" table="processdocument" catalog="cds" optimistic-lock="version">
+        <id name="processDocId" type="java.lang.Integer">
+            <column name="processDocId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="processassshedule" class="com.cds.entity.Processassshedule" fetch="select">
+            <column name="processAssShId" />
+        </many-to-one>
+        <many-to-one name="student" class="com.cds.entity.Student" fetch="select">
+            <column name="stuId" />
+        </many-to-one>
+        <property name="documentName" type="string">
+            <column name="documentName" length="100" />
+        </property>
+        <property name="documentUrl" type="string">
+            <column name="documentUrl" length="200" />
+        </property>
+        <property name="tutorOpinion" type="string">
+            <column name="tutorOpinion" length="300" />
+        </property>
+        <property name="upperDescribtion" type="string">
+            <column name="upperDescribtion" length="300" />
+        </property>
+        <property name="upperTime" type="timestamp">
+            <column name="upperTime" length="19" />
+        </property>
+        <property name="isReaded" type="java.lang.Integer">
+            <column name="isReaded" />
+        </property>
+        <property name="score" type="java.lang.Float">
+            <column name="score" precision="12" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-20 18:11:50 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.cds.entity.Processassshedule" table="processassshedule" catalog="cds" optimistic-lock="version">
+        <id name="processAssShId" type="java.lang.Integer">
+            <column name="processAssShId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cdteachergroup" class="com.cds.entity.Cdteachergroup" fetch="select">
+            <column name="cDTeacherGroupId" />
+        </many-to-one>
+        <many-to-one name="teacher" class="com.cds.entity.Teacher" fetch="select">
+            <column name="teacherId" />
+        </many-to-one>
+        <property name="startTime" type="timestamp">
+            <column name="startTime" length="19" />
+        </property>
+        <property name="endTime" type="timestamp">
+            <column name="endTime" length="19" />
+        </property>
+        <property name="processName" type="string">
+            <column name="ProcessName" length="100" />
+        </property>
+        <property name="processDescribtion" type="string">
+            <column name="ProcessDescribtion" length="300" />
+        </property>
+        <set name="processdocuments" table="processdocument" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="processAssShId" />
+            </key>
+            <one-to-many class="com.cds.entity.Processdocument" />
+        </set>
+    </class>
+</hibernate-mapping>

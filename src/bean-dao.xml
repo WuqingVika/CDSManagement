@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+	xmlns:p="http://www.springframework.org/schema/p"	
+	xmlns:context="http://www.springframework.org/schema/context"	
+	xmlns:aop="http://www.springframework.org/schema/aop"	
+	xmlns:tx="http://www.springframework.org/schema/tx"	
+	xsi:schemaLocation="	
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd	
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd	
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd	
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- 以下为公共的dao配置开始 -->
+	<!-- 分页配置 -->
+	<bean id="resultDao" class="com.cds.dao.impl.ResultDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--   公共的dao配置结束      -->
+	
+	<!-- 所有的dao实体类都罗列如下: -->
+	<!-- wq -->
+	<bean id="accountDao" class="com.cds.dao.impl.AccoutDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	<bean id="cdchoosingrecordDao" class="com.cds.dao.impl.CdchoosingrecordDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="cddesigntopicsDao" class="com.cds.dao.impl.CddesigntopicsDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="cdplanDao" class="com.cds.dao.impl.CdplanDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="cdteachergroupDao" class="com.cds.dao.impl.CdteachergroupDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="classesDao" class="com.cds.dao.impl.ClassesDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="collegeDao" class="com.cds.dao.impl.CollegeDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- zmm -->
+	<bean id="commentsDao" class="com.cds.dao.impl.CommentsDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	<bean id="evalstandardsDao" class="com.cds.dao.impl.EvalstandardDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	<bean id="majorDao" class="com.cds.dao.impl.MajorDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="processasssheduleDao" class="com.cds.dao.impl.ProcessasssheduleDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="processdocumentDao" class="com.cds.dao.impl.ProcessdocumentDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="replygroupDao" class="com.cds.dao.impl.ReplygroupDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="replyplanDao" class="com.cds.dao.impl.ReplyplanDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+		
+	<!-- cp -->
+	<bean id="replyRecordsDao" class="com.cds.dao.impl.ReplyrecordsDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="selfEvaluationDao" class="com.cds.dao.impl.SelfevaluationDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="studentDao" class="com.cds.dao.impl.StudentDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="studentGroupDao" class="com.cds.dao.impl.StudentGroupDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="studentScoreDao" class="com.cds.dao.impl.StudentscoreDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teacherDao" class="com.cds.dao.impl.TeacherDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="termDao" class="com.cds.dao.impl.TermDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+		
+	<!-- 配置一个dao工厂 -->
+	<bean id="daoFactory" class="com.cds.dao.facory.DaoFactory">
+		<!-- wq配置dao factory部分 -->
+		<property name="accountDao" ref="accountDao"></property>		
+		<property name="cdchoosingrecordDao" ref="cdchoosingrecordDao"></property>
+		<property name="cddesigntopicsDao" ref="cddesigntopicsDao"></property>
+		<property name="cdplanDao" ref="cdplanDao"></property>
+		<property name="cdteachergroupDao" ref="cdteachergroupDao"></property>
+		<property name="classesDao" ref="classesDao"></property>
+		<property name="collegeDao" ref="collegeDao"></property>
+		
+		<!-- zmm配置dao factory部分 -->
+		<property name="commentsDao" ref="commentsDao"></property>
+		<property name="evalstandardsDao" ref="evalstandardsDao"></property>
+		<property name="majorDao" ref="majorDao"></property>
+		<property name="processasssheduleDao" ref="processasssheduleDao"></property>
+		<property name="processdocumentDao" ref="processdocumentDao"></property>
+		<property name="replygroupDao" ref="replygroupDao"></property>
+		<property name="replyplanDao" ref="replyplanDao"></property>
+						
+		<!-- cp配置dao factory部分 -->
+		<property name="replyRecordsDao" ref="replyRecordsDao"></property>	
+		<property name="selfEvaluationDao" ref="selfEvaluationDao"></property>
+		<property name="studentDao" ref="studentDao"></property>
+		<property name="studentGroupDao" ref="studentGroupDao"></property>
+		<property name="studentScoreDao" ref="studentScoreDao"></property>
+		<property name="teacherDao" ref="teacherDao"></property>
+		<property name="termDao" ref="termDao"></property>
+	</bean>
+</beans>
